@@ -248,3 +248,29 @@ for (var i = 0; i<myarray.length; i++){
 	counter++
 }
 console.log (counter);
+
+/*closures*/
+function makeMultiplier(multiplier){
+	function b(){
+		console.log("Multiplier is:" +multiplier);
+	}
+	b();
+
+	return(
+		function(x){
+			return multiplier*x;
+		}
+
+		);
+}var doubleAll = makeMultiplier(2);
+console.log(doubleAll(10));
+/**/
+
+/*Fake namespaces
+Scrip 1, Script2, App*/
+ 
+ /* Immediately Invoked Function Expression= IIFE*/
+ (function(name){
+ 	console.log("Hello" +name);
+ }
+ 	) ("Coursera");
