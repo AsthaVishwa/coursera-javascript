@@ -2,9 +2,9 @@
 	{
 var byespeaker ={};
 var speakWord = "Good Bye";
-function speak(name) {
-  console.log(speakWord + " " + name);
+byespeaker.speak =functiom(names) {
+  console.log(speakWord + " " + names);
 }
 
-window.byespeaker = speak;
+window.byespeaker = byespeaker;
 })(window);
