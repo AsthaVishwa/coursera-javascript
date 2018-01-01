@@ -274,3 +274,8 @@ Scrip 1, Script2, App*/
  	console.log("Hello" +name);
  }
  	) ("Coursera");
+
+ var x = 10;
+if ( (null) || (console.log("Hello")) || x > 5 ) {
+  console.log("Hello");
+}
