@@ -23,11 +23,11 @@ function getrequestobject(){
 
 /*Makes an Ajax GET Request to 'requesturl'*/
 ajaxutils.sendgetrequest =
-function(requesturl, responsehandler){
+function(requesturl, responsehandler, isJsonResponse){
 	var request = getrequestobject();
 	request.onreadystatechange =
 	function() {
-		handleresponse(request, responsehandler);
+		handleresponse(request, responsehandler, isJsonResponse);
 	};
 	request.open ("GET", requesturl, true);
 	request.send(null); /*for POST only*/
@@ -40,8 +40,18 @@ and not an error*/
 function handleresponse(request, responsehandler){
 	if ((request.readystate == 4) &&
 		(request.status == 200)){
-		responsehandler(request);
+	/*default to JsonResponse=true*/
+if(isJsonResponse==undefined){
+	isJsonResponse=true;
 	}
+
+if (isJsonResponse){
+	responsehandler(JSON.parse(request.responsetext))
+}
+else{
+	responsehandler(request.responsetext)
+}
+}
 }
 
 /*Expose utility to the global object*/
