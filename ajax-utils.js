@@ -1,4 +1,4 @@
-(function(global){
+(function (global) {
 
 /*Set up a namespace for utility*/
 var ajaxutils = {};
@@ -20,17 +20,18 @@ function getrequestobject(){
 	}
 }
 
-var request= getrequestobject();
-var myhandler = null;
+
 /*Makes an Ajax GET Request to 'requesturl'*/
-ajaxutils.sendgetrequest=
+ajaxutils.sendgetrequest =
 function(requesturl, responsehandler){
-	myhandler= responsehandler;
+	var request = getrequestobject();
 	request.onreadystatechange =
-		handleresponse;
+	function() {
+		handleresponse(request, responsehandler);
+	};
 	request.open ("GET", requesturl, true);
 	request.send(null); /*for POST only*/
-}
+};
 
 /*only calls user provided 'responsehandler'
 function if response is ready
